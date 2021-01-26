@@ -9,13 +9,15 @@
 ## 컨테이너 이미지
 - `docker build -t <name>:<version> .`명령으로 빌드한다.
   - `<name>`, `<version>`은 사용자의 환경에 맞게 구성한다.
-  - `<name>` 기본값으로 `euffk/petclinic`, `<version>` 기본값으로 `0.0.1` 사용
+  - `<name>` 기본값으로 `euffk/petclinic`, `<version>` 기본값으로 `0.0.3` 사용
 - ENTRYPOINT는 `/usr/bin/java` CMD로 jar파일 넘겨 준다.
 
 ## 쿠버네티스 로그
 - logrotate는 어플리케이션 logback에서 처리하도록 한다.
 - kubectl logs를 위해 STDOUT으로도 나오게 설정한다.
 - kubernetes 노드에 STDOUT 로그는 도커 컨테이너 런타임이 정리한다.(10메가, 10개 파일 default, 워커 노드의 /etc/docker/daemon.json 파일에서 확인)
+- log는 워커 노드의 `/logs`디렉토리에 적재된다.
+- 만약 Pod가 한 워커 노드에 여러개 작동한다면 로그가 중첩되게 되므로 POD_NAME meatadata를 이용한다.
 
 ## 참고
 - 어플리케이션은 `curl -i GET <DNS>:8080/healthcheck` 명령으로 health 체크 가능하다.
