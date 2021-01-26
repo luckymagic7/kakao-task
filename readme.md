@@ -1,25 +1,13 @@
-# Spring PetClinic Sample Application built with Spring Data JDBC
-![Build Maven](https://github.com/spring-petclinic/spring-petclinic-data-jdbc/workflows/Build%20Maven/badge.svg)
+## 알아두기
+- gradle 버전은 6.8
+  - 그러므로 jdk 최소 버전은 8
+  - jdk 버전 변경 혹은 설치 대신 docker로 jdk 8 버전 이용하는게 편리
+- gradle 빌드도 `gradlew` 사용하여 gradle 버전에 종속적이지 않게 처리한다.
+- multi-stage 빌드를 이용하여 어플리케이션 실행은 jre 8 버전 환경에서 한다.
+- gradle 빌드 할 때 less를 compile 하지 못한다. 그냥 maven 산출물을 갖다 넣었다.
 
-This is a branch of the official [Spring PetClinic](https://github.com/spring-projects/spring-petclinic) application with domain & persistence layer built with [Spring Data JDBC](https://projects.spring.io/spring-data-jdbc/) instead of [Spring Data JPA](https://projects.spring.io/spring-data-jpa/).
-
-Additionally:
-
-- uses [TestContainers](http://testcontainers.org/) to spin up MySQL during integtation tests
-- uses [Wavefront](https://www.wavefront.com/) for monitoring
-
-Check original project [readme](https://github.com/spring-projects/spring-petclinic/blob/master/readme.md) for introduction the project, how to run, and how to contribute.
-
-## Understanding the Spring Petclinic application with a few diagrams
-
-[See the presentation here](http://fr.slideshare.net/AntoineRey/spring-framework-petclinic-sample-application)
-
-## Interesting Spring Petclinic forks
-
-The Spring Petclinic master branch in the main [spring-projects](https://github.com/spring-projects/spring-petclinic)
-GitHub org is the "canonical" implementation, currently based on Spring Boot and Thymeleaf.
-
-This [spring-petclinic-data-jdbc](https://github.com/spring-petclinic/spring-petclinic-data-jdbc) project is one of the [several forks](https://spring-petclinic.github.io/docs/forks.html) 
-hosted in a special GitHub org: [spring-petclinic](https://github.com/spring-petclinic).
-If you have a special interest in a different technology stack
-that could be used to implement the Pet Clinic then please join the community there.
+## 컨테이너 이미지
+- `docker build -t <name>:<version> .`명령으로 빌드한다.
+  - `<name>`, `<version>`은 사용자의 환경에 맞게 구성한다.
+  - `<name>` 기본값으로 `euffk/petclinic`, `<version>` 기본값으로 `0.0.1` 사용
+- ENTRYPOINT는 `/usr/bin/java` CMD로 jar파일 넘겨 준다.
