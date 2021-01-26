@@ -11,3 +11,15 @@
   - `<name>`, `<version>`은 사용자의 환경에 맞게 구성한다.
   - `<name>` 기본값으로 `euffk/petclinic`, `<version>` 기본값으로 `0.0.1` 사용
 - ENTRYPOINT는 `/usr/bin/java` CMD로 jar파일 넘겨 준다.
+
+## 쿠버네티스 로그
+- logrotate는 어플리케이션 logback에서 처리하도록 한다.
+- kubectl logs를 위해 STDOUT으로도 나오게 설정한다.
+- kubernetes 노드에 STDOUT 로그는 도커 컨테이너 런타임이 정리한다.(10메가, 10개 파일 default, 워커 노드의 /etc/docker/daemon.json 파일에서 확인)
+
+## 참고
+- 어플리케이션은 `curl -i GET <DNS>:8080/healthcheck` 명령으로 health 체크 가능하다.
+- 어플리케이션은 `curl -i DELETE <DNS>:8080/healthcheck` 명령으로 health를 다운 할 수 있다.
+  - 이 경우, k8s의 livenessprobe가 10초마다 체크하면서 3번 연속 실패 할 경우 컨테이너를 재시작 한다.
+- 어플리케이션은 `curl -i POST <DNS>:8080/healthcheck` 명령으로 health를 복구 할 수 있다.
+- 이 API는 db 연결을 확인하지 않는다. DB에 종속적인 프로그램이 db 문제가 있을 경우 어플리케이션을 재시작 할 필요는 없기 때문이다.
