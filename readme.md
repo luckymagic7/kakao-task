@@ -23,3 +23,8 @@
   - 이 경우, k8s의 livenessprobe가 10초마다 체크하면서 3번 연속 실패 할 경우 컨테이너를 재시작 한다.
 - 어플리케이션은 `curl -i POST <DNS>:8080/healthcheck` 명령으로 health를 복구 할 수 있다.
 - 이 API는 db 연결을 확인하지 않는다. DB에 종속적인 프로그램이 db 문제가 있을 경우 어플리케이션을 재시작 할 필요는 없기 때문이다.
+
+## graceful shutdown
+- 파드가 종료되면 kubelet이 pod에 sigterm 보낸다.
+- sigterm을 받으면 새로운 요청을 받지 않아야 하고, 기존 요청은 다 처리되야 한다(종료신호 받고 최대 30초의 요청 처리)
+- deployment 포드 스펙에 명시적으로 terminationGracePeriodSeconds: 30 적용 하기
