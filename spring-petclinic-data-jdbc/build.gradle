@@ -36,6 +36,9 @@ dependencies {
     implementation 'org.webjars:bootstrap:3.3.6'
     implementation 'org.springframework.boot:spring-boot-devtools:2.3.0.RC1'
     runtimeOnly 'mysql:mysql-connector-java:8.0.20'
+
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.3.0.RC1'
     testImplementation 'org.testcontainers:mysql:1.14.1'
 }
