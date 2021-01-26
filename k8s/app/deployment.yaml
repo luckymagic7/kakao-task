@@ -40,7 +40,7 @@ spec:
       containers:
       - name: petclinic
         ## Docker Hub 이미지 받기
-        image: euffk/petclinic:0.0.3
+        image: euffk/petclinic:0.0.1
         ## Docker Hub 이미지 받기
         imagePullPolicy: Always
         env:
@@ -76,5 +76,5 @@ spec:
           path: /logs
           type: DirectoryOrCreate
       terminationGracePeriodSeconds: 30
-      nodeSelector:
-        service: api
+      #nodeSelector:
+      #  service: api
