@@ -76,5 +76,3 @@ spec:
           path: /logs
           type: DirectoryOrCreate
       terminationGracePeriodSeconds: 30
-      #nodeSelector:
-      #  service: api
