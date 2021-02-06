@@ -66,3 +66,7 @@
 - `k8s`경로로 진입한다.
 - `k8s/app/ingress.yaml`파일의 `spec.rules.host` 값을 변경하여야 한다.
 - `kubectl apply -f app/`명령으로 어플리케이션 pod, 서비스, 인그레스를 실행한다.
+
+# 서비스 도식화
+![flow](https://user-images.githubusercontent.com/33619494/107115480-584e6e80-68b0-11eb-81be-5fa6298abc1b.jpeg)
+
