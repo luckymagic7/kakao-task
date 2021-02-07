@@ -7,4 +7,4 @@ spec:
   - port: 3306
   selector:
     app: mysql
-  clusterIP: None
+  clusterIP: None # 헤드리스 서비스이지만 셀렉터를 통해서 app:mysql을 가진 파드의 IP를 가리키도록 DNS를 수정하고 엔드포인트 레코드를 생성한다.

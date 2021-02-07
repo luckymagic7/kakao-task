@@ -14,13 +14,13 @@ spec:
       maxSurge: 1
       maxUnavailable: 0
   selector:
-    matchLabels:
+    matchLabels: # rs가 찾는 라벨을 정의, 해당 라벨과 일치하는 라벨을 가진 pod를 rs가 관리
       app: petclinic
   template:
     metadata:
       name: petclinic
       namespace: default
-      labels:
+      labels: # rs가 찾는 pod의 라벨
         app: petclinic
     spec:
       initContainers:

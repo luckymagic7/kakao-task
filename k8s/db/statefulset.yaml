@@ -41,7 +41,7 @@ spec:
   - metadata:
       name: data
     spec:
-      accessModes: ["ReadWriteOnce"]
+      accessModes: ["ReadWriteOnce"] # db의 스토리지로 하나의 노드에서 읽기 -  쓰기 가능하다.
       resources:
         requests:
           storage: 10Gi

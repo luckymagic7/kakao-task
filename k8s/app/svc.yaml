@@ -8,5 +8,5 @@ spec:
     app: petclinic
   ports:
     - protocol: TCP
-      port: 80
+      port: 80 # 서비스는 80으로 들어온 요청을 컨테이너의 8080으로 포워딩 한다.
       targetPort: 8080

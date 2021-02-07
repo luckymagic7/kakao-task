@@ -6,4 +6,4 @@ provisioner: kubernetes.io/aws-ebs
 parameters:
   type: gp2
   fsType: ext4
-volumeBindingMode: WaitForFirstConsumer
+volumeBindingMode: WaitForFirstConsumer # pvc를 사용하는 pod가 생길때까지 대기
